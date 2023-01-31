@@ -4,6 +4,7 @@ import { CMDivider, SuccessBtn, TestBtn } from "./styled";
 import { SeriesProps } from "../../interfaces/SeriesProps";
 import Form from "../../components/Form";
 import List from "../../components/List";
+import Spacer from "../../components/Spacer";
 
 interface Props {}
 
@@ -11,7 +12,7 @@ const Home: FC<Props> = () => {
   const [seriesList, setSeriesList] = useState<SeriesProps["seriesList"]>([]);
 
   return (
-    <div>
+    <Spacer>
       <h1>My favorite tv series</h1>
       <Form seriesList={seriesList} setSeriesList={setSeriesList} />
       <List seriesList={seriesList} />
@@ -58,7 +59,7 @@ const Home: FC<Props> = () => {
         {/* <Typography variant="h1">H1</Typography>
       <Typography variant="h2">H2</Typography> */}
       </Box>
-    </div>
+    </Spacer>
   );
 };
 
