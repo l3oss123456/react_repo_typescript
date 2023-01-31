@@ -1,0 +1,13 @@
+.series-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+.series-list img {
+  width: 100%;
+}
+
+.series-list p {
+  text-align: center;
+}
