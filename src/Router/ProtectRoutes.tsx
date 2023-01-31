@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { getLocalStorage } from "../Services/Utils/Storage";
+import { getLocalStorage } from "../services/utils/Storage";
 
 const ProtectedRoutes = ({ children }: any) => {
   const auth = getLocalStorage("loginInfo");

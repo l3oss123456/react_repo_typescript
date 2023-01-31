@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   setLocalStorage,
   removeLocalStorage,
-} from "../../Services/Utils/Storage";
+} from "../../services/utils/Storage";
 import { Navigate } from "react-router-dom";
 
 const Login = () => {

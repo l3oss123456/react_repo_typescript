@@ -1,4 +1,3 @@
-// import { ThemeOptions } from "@mui/material";
 import React from "react";
 
 declare module "@mui/material/styles" {
@@ -38,7 +37,6 @@ declare module "@mui/material/styles" {
           };
         };
       };
-
       palette: {
         light: {
           primary: {
@@ -73,7 +71,6 @@ declare module "@mui/material/styles" {
           };
         };
       };
-
       typography: {
         h1: {
           fontSize: string;

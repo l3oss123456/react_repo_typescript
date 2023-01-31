@@ -15,10 +15,10 @@ code {
 @font-face {
   font-family: "Roboto-Regular";
   src: local("Roboto-Regular"),
-    url("./Assets/Fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+    url("./assets/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "Roboto-Bold";
   src: local("Roboto-Bold"),
-    url("./Assets/Fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+    url("./assets/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
 }

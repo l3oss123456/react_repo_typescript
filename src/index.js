@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Routes from "./Router";
+import Routes from "./router";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "@mui/material";
-import theme from "./Configs/Theme";
+import theme from "./configs/Theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -6,7 +6,7 @@ import React, {
   SetStateAction,
   useState,
 } from "react";
-import { SeriesProps } from "../Interfaces/SeriesProps";
+import { SeriesProps } from "../interfaces/SeriesProps";
 
 interface Props {
   seriesList: SeriesProps["seriesList"];
@@ -69,7 +69,7 @@ const Form: FC<Props> = ({ seriesList, setSeriesList }) => {
         </div>
 
         <div className="form-div">
-          <label htmlFor="name">Image Cover</label>
+          <label htmlFor="name">Image Cover Link</label>
           <input
             type={`text`}
             name={`name`}

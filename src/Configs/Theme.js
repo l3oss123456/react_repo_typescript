@@ -32,6 +32,20 @@ const theme = createTheme({
     // palette: Palette,
     typography: Typography,
   },
+  // components: {
+  //   MuiButton: {
+  //     variants: [
+  //       {
+  //         props: { variant: `bold` },
+  //         style: {
+  //           fontWeight: `bold`,
+  //           border: `4px solid black`,
+  //           color: `orange`,
+  //         },
+  //       },
+  //     ],
+  //   },
+  // },
 });
 
 export default theme;

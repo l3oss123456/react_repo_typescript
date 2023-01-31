@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { SeriesProps } from "../Interfaces/SeriesProps";
+import { SeriesProps } from "../interfaces/SeriesProps";
 import "./List.css";
 
 const List: FC<SeriesProps> = ({ seriesList }) => {
