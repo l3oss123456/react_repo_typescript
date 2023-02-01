@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import { setLocalStorage, removeLocalStorage } from "../../services/utils/Storage"
 import { Navigate } from "react-router-dom"
+import Spacer from "../../components/Spacer"
 
 const Login = () => {
     const [isLogin, setIsLogin] = useState(false)
 
     return (
-        <div>
+        <Spacer>
             {isLogin && <Navigate to={`/`} replace />}
             <p>username</p>
             <input />
@@ -36,7 +37,7 @@ const Login = () => {
             >
                 Sign-out
             </button>
-        </div>
+        </Spacer>
     )
 }
 

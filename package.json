@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
-    "@types/ramda": "^0.28.22"
+    "@types/ramda": "^0.28.22",
+    "@types/react": "^18.0.27"
   }
 }
