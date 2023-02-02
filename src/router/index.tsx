@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '../pages/home';
-import Login from '../pages/login';
-import ProtectedRoutes from './ProtectRoutes';
-import ScrollTop from '../components/ScrollTop';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import ProtectedRoutes from "./ProtectRoutes"
+import ScrollTop from "../components/ScrollTop"
+import Login from "../pages/login"
+import Home from "../pages/home"
+import Test from "../pages/test"
 
 const Router = () => {
     return (
@@ -19,10 +20,18 @@ const Router = () => {
                             </ProtectedRoutes>
                         }
                     />
+                    <Route
+                        path={`/test`}
+                        element={
+                            <ProtectedRoutes>
+                                <Test />
+                            </ProtectedRoutes>
+                        }
+                    />
                 </Routes>
             </ScrollTop>
         </BrowserRouter>
-    );
-};
+    )
+}
 
-export default Router;
+export default Router
