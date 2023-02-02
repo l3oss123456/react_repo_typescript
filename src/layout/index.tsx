@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import HeaderLayout from "./Header"
+import HeaderLayout from "./header"
 
 interface Props {
     children: React.ReactNode
