@@ -1,33 +1,27 @@
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
+import { Button, Box } from "@mui/material"
+import { useForm, Controller } from "react-hook-form"
+import Spacer from "../../components/Spacer"
 import { setLocalStorage } from "../../services/utils/Storage"
 import { Navigate } from "react-router-dom"
-import { Box, IconButton, InputAdornment, TextField } from "@mui/material"
-import { useForm } from "react-hook-form"
-import Spacer from "../../components/Spacer"
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined"
-import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined"
+import Input from "../../components/input/Input"
+import InputPassword from "../../components/input/InputPassword"
 
-const Login = () => {
+interface propTypes {}
+
+const Login: FC<propTypes> = () => {
     const [isLogin, setIsLogin] = useState(false)
-    const [showPassword, setShowPassword] = useState(false)
 
     const {
-        register,
         handleSubmit,
-        // watch,
+        control,
         formState: { errors }
     } = useForm()
 
-    console.log("errorsss", errors)
-
-    const handleClickShowPassword = () => {
-        setShowPassword((show) => !show)
-    }
-    const onSubmit = (data: Object) => {
-        console.log(data)
+    const onSubmit = (data: any) => {
         setLocalStorage(`loginInfo`, {
-            username: "test",
-            password: "1234",
+            username: data.username,
+            password: data.password,
             firstName: "boss",
             lastName: "kung"
         })
@@ -36,51 +30,77 @@ const Login = () => {
 
     return (
         <Spacer>
-            {isLogin && <Navigate to={`/`} replace />}
+            {isLogin && <Navigate to={`/`} />}
 
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 style={{
+                    height: `100vh`,
                     display: `flex`,
                     flexDirection: `column`,
-                    alignItems: `center`,
                     justifyContent: `center`,
-                    height: `100vh`
+                    alignItems: `center`
                 }}
             >
-                <Box style={{ display: `flex`, flexDirection: `column`, justifyContent: `center` }}>
-                    <Box style={{ textAlign: `left`, width: `max-content` }}>
-                        <TextField label="username" variant="outlined" defaultValue="boss" {...register("username", { required: true })} />
-                        {errors.username && <p style={{ color: `red` }}>{`Invalid username!`}</p>}
-                    </Box>
+                <Box>
+                    <Controller
+                        name={`username`}
+                        control={control}
+                        defaultValue={`test`}
+                        rules={{
+                            required: true
+                        }}
+                        render={({ field }) => {
+                            return (
+                                <Box>
+                                    <Input
+                                        {...field}
+                                        label={field.name}
+                                        autoFocus
+                                        error={errors.username ? true : false}
+                                        style={{
+                                            width: `100%`
+                                        }}
+                                    />
+                                    {errors.username && <p style={{ color: `red` }}>{`Invalid username!`}</p>}
+                                </Box>
+                            )
+                        }}
+                    />
 
-                    <Box style={{ marginTop: 20, width: 200 }}>
-                        <TextField
-                            type={showPassword ? `text` : `password`}
-                            label="password"
-                            variant="outlined"
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton onClick={handleClickShowPassword} edge="end">
-                                            {showPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                )
-                            }}
-                            defaultValue="kung"
-                            {...register("password", { required: true })}
-                        />
-                        {errors.password && <p style={{ color: `red` }}>{`Invalid password!`}</p>}
-                    </Box>
-                    <button
+                    <Controller
+                        name={`password`}
+                        control={control}
+                        defaultValue={`1234`}
+                        rules={{
+                            required: true
+                        }}
+                        render={({ field }) => {
+                            return (
+                                <Box
+                                    style={{
+                                        margin: `20px 0px`
+                                    }}
+                                >
+                                    <InputPassword {...field} label={field.name} error={errors.password ? true : false} />
+                                    {errors.password && <p style={{ color: `red` }}>{`Invalid password!`}</p>}
+                                </Box>
+                            )
+                        }}
+                    />
+
+                    <Button
+                        variant="contained"
+                        color={`primary`}
+                        type={`submit`}
                         disabled={Object.values(errors).length > 0}
                         style={{
+                            width: `100%`,
                             marginTop: 20
                         }}
                     >
                         Login
-                    </button>
+                    </Button>
                 </Box>
             </form>
         </Spacer>

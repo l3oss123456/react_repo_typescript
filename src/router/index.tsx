@@ -3,7 +3,7 @@ import ProtectedRoutes from "./ProtectRoutes"
 import ScrollTop from "../components/ScrollTop"
 import Login from "../pages/login"
 import Home from "../pages/home"
-import Test from "../pages/test"
+import Test from "../pages/test/index"
 
 const Router = () => {
     return (
@@ -11,6 +11,14 @@ const Router = () => {
             <ScrollTop>
                 <Routes>
                     <Route path={`/login`} element={<Login />} />
+                    {/* <Route
+                        path={`/login`}
+                        element={
+                            <ProtectedRoutes>
+                                <Login />
+                            </ProtectedRoutes>
+                        }
+                    /> */}
 
                     <Route
                         path={`/`}

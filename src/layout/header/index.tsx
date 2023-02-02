@@ -7,7 +7,7 @@ interface Props {}
 
 const HeaderLayout: FC<Props> = () => {
     return (
-        <div style={{ background: `black`, marginBottom: 20 }}>
+        <div style={{ background: `black`, marginBottom: 20, padding: `20px` }}>
             <div style={{ display: `flex`, gap: 20 }}>
                 {pages.map((page, index) => {
                     return (

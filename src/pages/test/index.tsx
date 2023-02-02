@@ -1,24 +1,18 @@
 import React from "react"
-import Spacer from "../../components/Spacer"
-// import Select from "react-select"
 import { useForm, Controller } from "react-hook-form"
-import { Input, Box, TextField } from "@mui/material"
+import Spacer from "../../components/Spacer"
+import { Button, TextField, Box } from "@mui/material"
 
 const Test = () => {
     const {
-        register,
-        // handleSubmit,
-        // watch,
+        handleSubmit,
+        control,
         formState: { errors }
     } = useForm()
 
-    const { control, handleSubmit } = useForm({
-        defaultValues: {
-            firstName: "xxx",
-            username2: "test"
-        }
-    })
-    const onSubmit = (data: Object) => {
+    console.log("errorserrors;", errors)
+
+    const onSubmit = (data: any) => {
         console.log(data)
     }
 
@@ -28,47 +22,40 @@ const Test = () => {
                 <Controller
                     name="firstName"
                     control={control}
-                    render={({ field }) => {
-                        return <Input {...field} />
+                    rules={{
+                        required: true
                     }}
-                />
-
-                <Controller
-                    name="username2"
-                    control={control}
+                    defaultValue={``}
                     render={({ field }) => {
-                        console.log("fieldfield,field", field)
-
                         return (
-                            <Box style={{ textAlign: `left`, width: `max-content` }}>
-                                <TextField
-                                    label={field.name}
-                                    variant="outlined"
-                                    defaultValue={field.value}
-                                    {...register("username", { required: true })}
-                                />
-                                {errors.username && <p style={{ color: `red` }}>{`Invalid username!`}</p>}
+                            <Box>
+                                <TextField {...field} label={field.name} variant="outlined" />
+                                {errors.firstName && <p style={{ color: `red` }}>{`Invalid first name!`}</p>}
                             </Box>
                         )
                     }}
                 />
 
-                {/* <Controller
-                    name="select"
+                <Controller
+                    name={`lastName`}
                     control={control}
-                    render={({ field }) => (
-                        <select
-                            {...field}
-                            options={[
-                                { value: "chocolate", label: "Chocolate" },
-                                { value: "strawberry", label: "Strawberry" },
-                                { value: "vanilla", label: "Vanilla" }
-                            ]}
-                        />
-                    )}
+                    rules={{
+                        required: true
+                    }}
+                    defaultValue={``}
+                    render={({ field }) => {
+                        return (
+                            <Box>
+                                <TextField {...field} label={field.name} variant="outlined" />
+                                {errors.lastName && <p style={{ color: `red` }}>{`Invalid last name!`}</p>}
+                            </Box>
+                        )
+                    }}
                 />
-                 */}
-                <input type="submit" />
+
+                <Button variant="contained" color="primary" type="submit" disabled={Object.values(errors).length > 0}>
+                    Sign up
+                </Button>
             </form>
         </Spacer>
     )
