@@ -4,6 +4,7 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined"
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined"
 
 interface Props {
+    name?: string
     value?: string
     label?: string
     autoFocus?: boolean
@@ -15,7 +16,7 @@ interface Props {
     style?: any
 }
 
-const InputPassword: FC<Props> = ({ value, label = `password`, variant = `outlined`, autoFocus, error, onChange, onBlur, style }) => {
+const InputPassword: FC<Props> = ({ name, value, label = `password`, variant = `outlined`, autoFocus, error, onChange, onBlur, style }) => {
     const [revealPassword, setRevealPassword] = useState(false)
 
     return (

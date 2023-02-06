@@ -54,7 +54,13 @@ const Login: FC<propTypes> = () => {
                             return (
                                 <Box>
                                     <Input
-                                        {...field}
+                                        name={field.name}
+                                        value={field.value}
+                                        // onChange={field.onChange}
+                                        onChange={(e: any) => {
+                                            field.onChange(e.target.value)
+                                        }}
+                                        onBlur={field.onBlur}
                                         label={field.name}
                                         autoFocus
                                         error={errors.username ? true : false}
@@ -82,7 +88,14 @@ const Login: FC<propTypes> = () => {
                                         margin: `20px 0px`
                                     }}
                                 >
-                                    <InputPassword {...field} label={field.name} error={errors.password ? true : false} />
+                                    <InputPassword
+                                        name={field.name}
+                                        value={field.value}
+                                        onChange={field.onChange}
+                                        onBlur={field.onBlur}
+                                        label={field.name}
+                                        error={errors.password ? true : false}
+                                    />
                                     {errors.password && <p style={{ color: `red` }}>{`Invalid password!`}</p>}
                                 </Box>
                             )

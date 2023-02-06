@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import { InputAdornment, TextField } from "@mui/material"
 
 interface Props {
+    name?: string
     value?: string
     label?: string
     type?: string
@@ -14,9 +15,10 @@ interface Props {
     style?: any
 }
 
-const Input: FC<Props> = ({ value, label, type = `text`, variant = `outlined`, autoFocus, error, onChange, onBlur, icon, style }) => {
+const Input: FC<Props> = ({ name, value, label, type = `text`, variant = `outlined`, autoFocus, error, onChange, onBlur, icon, style }) => {
     return (
         <TextField
+            name={name}
             value={value}
             label={label}
             type={type}
