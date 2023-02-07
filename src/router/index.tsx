@@ -11,14 +11,6 @@ const Router = () => {
             <ScrollTop>
                 <Routes>
                     <Route path={`/login`} element={<Login />} />
-                    {/* <Route
-                        path={`/login`}
-                        element={
-                            <ProtectedRoutes>
-                                <Login />
-                            </ProtectedRoutes>
-                        }
-                    /> */}
 
                     <Route
                         path={`/`}
