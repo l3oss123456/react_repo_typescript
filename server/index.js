@@ -32,7 +32,6 @@ app.post(`/create_token`, (req, res) => {
 })
 app.get("/get_token", (req, res) => {
     let c = cookieParser.JSONCookies(req.cookies)
-    // console.log('Cookie', c);
     let token = c?.access_token ?? null
     res.json({
         access_token: token ?? "none",

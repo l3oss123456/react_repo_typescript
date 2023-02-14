@@ -3,7 +3,7 @@ import { Button, Box } from "@mui/material"
 import { useForm, Controller } from "react-hook-form"
 import Spacer from "../../components/Spacer"
 import { setLocalStorage } from "../../services/utils/Storage"
-import { Navigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import Input from "../../components/input/Input"
 import InputPassword from "../../components/input/InputPassword"
 
@@ -11,6 +11,7 @@ interface propTypes {}
 
 const Login: FC<propTypes> = () => {
     const [isLogin, setIsLogin] = useState(false)
+    const navigate = useNavigate()
 
     const {
         handleSubmit,
@@ -19,13 +20,37 @@ const Login: FC<propTypes> = () => {
     } = useForm()
 
     const onSubmit = (data: any) => {
-        setLocalStorage(`loginInfo`, {
-            username: data.username,
-            password: data.password,
-            firstName: "boss",
-            lastName: "kung"
+        // setLocalStorage(`loginInfo`, {
+        //     username: data.username,
+        //     password: data.password,
+        //     firstName: "boss",
+        //     lastName: "kung"
+        // })
+        // setIsLogin(true)
+
+        fetch("/create_token", {
+            method: "POST",
+            body: JSON.stringify({
+                access_token: data,
+                refresh_token: data
+            }),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }
+        }).then(async (res) => {
+            const data = await res.json()
+            // console.log("data;", data)
+            if (data.code == 1000) {
+                // setLocalStorage(`loginInfo`, {
+                //     username: data.username,
+                //     password: data.password,
+                //     firstName: "boss",
+                //     lastName: "kung"
+                // })
+                navigate("/")
+            }
         })
-        setIsLogin(true)
     }
 
     return (
@@ -46,7 +71,7 @@ const Login: FC<propTypes> = () => {
                     <Controller
                         name={`username`}
                         control={control}
-                        defaultValue={`test`}
+                        defaultValue={`test123abc`}
                         rules={{
                             required: true
                         }}
@@ -77,7 +102,7 @@ const Login: FC<propTypes> = () => {
                     <Controller
                         name={`password`}
                         control={control}
-                        defaultValue={`1234`}
+                        defaultValue={`1234abd34er`}
                         rules={{
                             required: true
                         }}
